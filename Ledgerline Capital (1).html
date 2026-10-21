@@ -1,0 +1,341 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Ledgerline Capital</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: demo banner, nav, hero with illustrative chart, how it works, plan cards, strategy and risk blocks, FAQ, Telegram call to action. */
+:root {
+  --bg: #0A1020;
+  --surface: #121B2E;
+  --surface-2: #182339;
+  --ink: #EAF0FA;
+  --muted: #9AA8C2;
+  --line: #24314B;
+  --accent: #F6A21E;
+  --accent-ink: #1B1100;
+  --accent-soft: #3A2B0E;
+  --up: #3DD6A0;
+  --warn-bg: #3A2B0E;
+  --warn-ink: #F6B84A;
+  --font-display: "Archivo", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #F2F4F9; --surface: #FFFFFF; --surface-2: #F6F8FC; --ink: #0F1A2E; --muted: #546178; --line: #D8DEE9;
+    --accent: #B96A00; --accent-ink: #FFFFFF; --accent-soft: #FCEBD0; --up: #14785A;
+    --warn-bg: #FCEBD0; --warn-ink: #8A4B00;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #F2F4F9; --surface: #FFFFFF; --surface-2: #F6F8FC; --ink: #0F1A2E; --muted: #546178; --line: #D8DEE9;
+  --accent: #B96A00; --accent-ink: #FFFFFF; --accent-soft: #FCEBD0; --up: #14785A;
+  --warn-bg: #FCEBD0; --warn-ink: #8A4B00;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-block: 0 32px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1080px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; text-wrap: balance; margin: 0; letter-spacing: -0.02em; }
+p { margin: 0; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.eyebrow { font: 500 12px var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+.demo { background: var(--warn-bg); color: var(--warn-ink); font-size: 13px; text-align: center; padding: 8px 12px; margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px))); }
+.demo b { font-weight: 600; }
+
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; flex-wrap: wrap; }
+.brand { font: 800 21px var(--font-display); display: flex; align-items: center; gap: 10px; letter-spacing: -0.02em; }
+.brand svg { width: 28px; height: 28px; flex: none; }
+.nav { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; font-size: 14px; }
+.nav a { color: var(--muted); text-decoration: none; }
+.nav a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 20px; border-radius: 10px; font: 600 15px var(--font-body); text-decoration: none; border: 1px solid transparent; cursor: pointer; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--muted); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px; align-items: center; padding-block: 40px 64px; }
+.hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 800; margin-top: 16px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lede { margin-top: 20px; font-size: 18px; color: var(--muted); max-width: 46ch; }
+.chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+.chip { font: 500 12px var(--font-mono); padding: 6px 12px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); }
+
+.board { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px; min-width: 0; }
+.board-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.board-head b { font: 500 22px var(--font-mono); }
+.board-head span { font: 500 12px var(--font-mono); color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.board svg { width: 100%; height: auto; display: block; margin-top: 14px; }
+.board text { font: 11px var(--font-mono); fill: var(--muted); }
+.board .cap { margin-top: 10px; font-size: 12px; color: var(--muted); }
+
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+.sec-head { max-width: 640px; margin-bottom: 32px; }
+.sec-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-top: 10px; }
+.sec-head p { color: var(--muted); margin-top: 12px; }
+
+/* How it works: a real sequence */
+.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; counter-reset: s; }
+.flow li { counter-increment: s; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; min-width: 0; }
+.flow li::before { content: counter(s); display: block; font: 500 32px var(--font-mono); color: var(--accent); margin-bottom: 14px; }
+.flow h3 { font-size: 20px; }
+.flow p { color: var(--muted); font-size: 15px; margin-top: 8px; }
+
+/* Plans */
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.plan { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 26px; display: flex; flex-direction: column; min-width: 0; }
+.plan.featured { border-color: var(--accent); background: var(--surface-2); }
+.plan .tag { font: 500 11px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); min-height: 16px; }
+.plan h3 { font-size: 24px; margin-top: 6px; }
+.plan .min { margin-top: 14px; font: 500 30px var(--font-mono); }
+.plan .min small { font: 400 13px var(--font-body); color: var(--muted); display: block; margin-top: 2px; }
+.plan .desc { color: var(--muted); font-size: 15px; margin-top: 14px; }
+.plan ul { list-style: none; padding: 0; margin: 18px 0 22px; display: grid; gap: 10px; font-size: 15px; }
+.plan li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 8px; }
+.plan li::before { content: ""; width: 8px; height: 8px; margin-top: 8px; border-radius: 2px; background: var(--accent); }
+.plan .btn { margin-top: auto; }
+.plans-note { margin-top: 18px; font-size: 13px; color: var(--muted); }
+
+/* Strategy + risk */
+.split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 26px; min-width: 0; }
+.panel h3 { font-size: 22px; }
+.panel dl { margin: 16px 0 0; display: grid; gap: 14px; }
+.panel dt { font-weight: 600; }
+.panel dd { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+
+/* FAQ */
+.faq { display: grid; gap: 10px; max-width: 760px; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 0 20px; }
+summary { cursor: pointer; padding-block: 16px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font: 500 20px var(--font-mono); color: var(--accent); flex: none; }
+details[open] summary::after { content: "-"; }
+details p { padding-bottom: 18px; color: var(--muted); font-size: 15px; }
+
+/* CTA */
+.cta { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 40px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center; }
+.cta h2 { font-size: clamp(26px, 3.6vw, 38px); font-weight: 800; }
+.cta p { color: var(--muted); margin-top: 10px; max-width: 52ch; }
+.linkline { margin-top: 16px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font: 13px var(--font-mono); color: var(--muted); }
+.linkline code { background: var(--bg); padding: 6px 10px; border-radius: 6px; overflow-wrap: anywhere; color: var(--ink); }
+.linkline button { font: 600 12px var(--font-body); padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+
+.risk { background: var(--warn-bg); color: var(--warn-ink); border-radius: 12px; padding: 18px 20px; font-size: 14px; }
+.risk b { font-weight: 600; }
+footer { padding-top: 24px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 860px) {
+  .hero, .split, .cta { grid-template-columns: minmax(0, 1fr); }
+  .flow, .plans { grid-template-columns: minmax(0, 1fr); }
+  .cta { padding: 26px; }
+  .hero { padding-block: 24px 48px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<div class="wrap">
+  <div class="demo"><b>Demo project.</b> Ledgerline Capital is a fictional company made for a course assignment. It holds no money and offers no real service.</div>
+
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="7" fill="var(--accent)"/><path d="M9 7v14h10" fill="none" stroke="var(--accent-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Ledgerline Capital
+    </div>
+    <nav class="nav" aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#plans">Plans</a>
+      <a href="#approach">Our approach</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-primary" data-tg href="#" target="_blank" rel="noopener" style="padding:8px 16px;color:var(--accent-ink)">Open account</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Bitcoin trading and investment</div>
+        <h1>We trade Bitcoin so your money <em>keeps working.</em></h1>
+        <p class="lede">Choose a plan, fund your account, and our trading desk manages your Bitcoin position around the clock. Reports arrive on Telegram.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" data-tg href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 3.6 2.8 11c-1.3.5-1.3 1.3-.2 1.6l4.9 1.5 1.9 5.8c.2.6.1.9.8.9.5 0 .8-.2 1.1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.7-.8L23 4.9c.3-1.3-.5-1.9-1.1-1.3zM8.6 13.6l9.7-6.1c.5-.3.9-.1.5.2l-8.1 7.3-.3 3.4z"/></svg>
+            Start on Telegram
+          </a>
+          <a class="btn btn-ghost" href="#plans">See plans</a>
+        </div>
+        <div class="chips"><span class="chip">24/7 market coverage</span><span class="chip">BTC and ETH</span><span class="chip">Reports on Telegram</span></div>
+      </div>
+
+      <div class="board" aria-label="Illustrative price chart">
+        <div class="board-head"><b>BTC / USD</b><span>Illustration</span></div>
+        <svg viewBox="0 0 400 200" role="img" aria-label="Illustrative line chart of a price rising and falling over time">
+          <defs>
+            <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" style="stop-color:var(--accent);stop-opacity:0.35"/>
+              <stop offset="1" style="stop-color:var(--accent);stop-opacity:0"/>
+            </linearGradient>
+          </defs>
+          <g stroke="var(--line)" stroke-width="1">
+            <line x1="0" y1="40" x2="400" y2="40"/><line x1="0" y1="90" x2="400" y2="90"/><line x1="0" y1="140" x2="400" y2="140"/><line x1="0" y1="190" x2="400" y2="190"/>
+          </g>
+          <path d="M0 150 L30 138 L58 146 L88 118 L118 126 L150 96 L180 108 L210 84 L240 100 L268 66 L298 78 L330 48 L360 62 L400 34 L400 190 L0 190 Z" fill="url(#fill)"/>
+          <path d="M0 150 L30 138 L58 146 L88 118 L118 126 L150 96 L180 108 L210 84 L240 100 L268 66 L298 78 L330 48 L360 62 L400 34" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="400" cy="34" r="5" fill="var(--accent)"/>
+          <text x="4" y="186">time →</text>
+        </svg>
+        <p class="cap">Sample shape for design purposes. Not real prices or results. Bitcoin can fall as well as rise.</p>
+      </div>
+    </div>
+
+    <section id="how">
+      <div class="sec-head">
+        <div class="eyebrow">How it works</div>
+        <h2>From sign-up to first report in three steps</h2>
+      </div>
+      <ol class="flow">
+        <li><h3>Open your account</h3><p>Message our Telegram bot, answer a few questions about your goals, and verify who you are.</p></li>
+        <li><h3>Pick a plan and fund it</h3><p>Choose the plan that fits your budget and risk comfort, then deposit with Bitcoin or a stablecoin.</p></li>
+        <li><h3>Follow your portfolio</h3><p>Our desk manages the position. You get a statement on Telegram showing your balance and every trade.</p></li>
+      </ol>
+    </section>
+
+    <section id="plans">
+      <div class="sec-head">
+        <div class="eyebrow">Plans</div>
+        <h2>Three ways to invest</h2>
+        <p>The plans differ in minimum deposit and how actively we trade. Results depend on the market and are never guaranteed.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <div class="tag">&nbsp;</div>
+          <h3>Starter</h3>
+          <div class="min">$100<small>minimum deposit</small></div>
+          <p class="desc">Steady accumulation for first-time investors.</p>
+          <ul><li>Regular Bitcoin purchases on a set schedule</li><li>Monthly statement on Telegram</li><li>Withdraw requests handled by the bot</li></ul>
+          <a class="btn btn-ghost" data-tg data-plan="starter" href="#" target="_blank" rel="noopener">Choose Starter</a>
+        </div>
+        <div class="plan featured">
+          <div class="tag">Most chosen</div>
+          <h3>Growth</h3>
+          <div class="min">$1,000<small>minimum deposit</small></div>
+          <p class="desc">A Bitcoin and Ethereum portfolio that we rebalance.</p>
+          <ul><li>Core Bitcoin and Ethereum holdings</li><li>Rebalanced when weights drift</li><li>Weekly statement on Telegram</li></ul>
+          <a class="btn btn-primary" data-tg data-plan="growth" href="#" target="_blank" rel="noopener">Choose Growth</a>
+        </div>
+        <div class="plan">
+          <div class="tag">&nbsp;</div>
+          <h3>Pro</h3>
+          <div class="min">$10,000<small>minimum deposit</small></div>
+          <p class="desc">Active trading by our desk, with strict loss limits.</p>
+          <ul><li>Active trades on both rising and falling markets</li><li>Stop-loss limits on every position</li><li>Daily statement and a named account manager</li></ul>
+          <a class="btn btn-ghost" data-tg data-plan="pro" href="#" target="_blank" rel="noopener">Choose Pro</a>
+        </div>
+      </div>
+      <p class="plans-note">Plans, minimums and features on this page are examples for the demo. No return figures are shown because returns cannot be promised.</p>
+    </section>
+
+    <section id="approach">
+      <div class="sec-head">
+        <div class="eyebrow">Our approach</div>
+        <h2>How we trade, and how we limit losses</h2>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <h3>Strategies</h3>
+          <dl>
+            <dt>Scheduled buying</dt><dd>Fixed amounts are bought at regular times, so no single price decides the entry.</dd>
+            <dt>Portfolio rebalancing</dt><dd>When one coin grows past its target share, we sell part and restore the original balance.</dd>
+            <dt>Active trading</dt><dd>Short-term positions based on price trends, always opened with a pre-set exit.</dd>
+          </dl>
+        </div>
+        <div class="panel">
+          <h3>Risk controls</h3>
+          <dl>
+            <dt>Stop-loss on active trades</dt><dd>Each position has a maximum loss set before it opens.</dd>
+            <dt>Position size limits</dt><dd>No single trade can use more than a fixed share of your balance.</dd>
+            <dt>Separate client records</dt><dd>Every account has its own ledger so balances can be checked line by line.</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="sec-head">
+        <div class="eyebrow">Questions</div>
+        <h2>Frequently asked</h2>
+      </div>
+      <div class="faq">
+        <details open><summary>Is Ledgerline Capital a real company?</summary><p>No. It is a fictional brand built for a course assignment to show how an investment site could look. It does not hold funds or trade for anyone.</p></details>
+        <details><summary>Are returns guaranteed?</summary><p>No investment return is guaranteed. A real provider that promises fixed or risk-free profit from Bitcoin trading should be treated as a warning sign.</p></details>
+        <details><summary>Can I lose money?</summary><p>Yes. Bitcoin prices can fall sharply and you can lose part or all of what you invest. Only invest money you can afford to lose.</p></details>
+        <details><summary>How does the Telegram bot fit in?</summary><p>The bot is where an account would be opened, plans chosen, and statements delivered. The buttons on this page open it.</p></details>
+      </div>
+    </section>
+
+    <section>
+      <div class="cta">
+        <div>
+          <h2>Start the conversation on Telegram</h2>
+          <p>Open the bot, tell it your goal, and pick a plan. It will never ask for your recovery phrase or password.</p>
+          <div class="linkline"><code id="tg-text">t.me/…</code><button type="button" id="copy">Copy link</button></div>
+        </div>
+        <a class="btn btn-primary" data-tg href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 3.6 2.8 11c-1.3.5-1.3 1.3-.2 1.6l4.9 1.5 1.9 5.8c.2.6.1.9.8.9.5 0 .8-.2 1.1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.7-.8L23 4.9c.3-1.3-.5-1.9-1.1-1.3zM8.6 13.6l9.7-6.1c.5-.3.9-.1.5.2l-8.1 7.3-.3 3.4z"/></svg>
+          Open the bot
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <div class="risk"><b>Risk warning.</b> Trading and investing in crypto assets is high risk and you can lose all of your money. Past or illustrated performance does not predict future results. This demo site is not financial advice and is not an offer to sell or buy anything.</div>
+      <footer><span>Ledgerline Capital (demo)</span><span>Built as a course assignment</span></footer>
+    </section>
+  </main>
+</div>
+
+<script>
+/* Set your bot's username here (the part after t.me/, no @). */
+var BOT_USERNAME = "LedgerlineBot";
+var BOT_URL = "https://t.me/" + BOT_USERNAME;
+
+document.querySelectorAll("a[data-tg]").forEach(function (a) {
+  var plan = a.getAttribute("data-plan");
+  a.href = plan ? BOT_URL + "?start=" + plan : BOT_URL;
+});
+document.getElementById("tg-text").textContent = BOT_URL.replace("https://", "");
+document.getElementById("copy").addEventListener("click", function () {
+  var btn = this;
+  function done(t) { btn.textContent = t; setTimeout(function () { btn.textContent = "Copy link"; }, 1600); }
+  function selectText() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById("tg-text"));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done("Press copy");
+  }
+  try { navigator.clipboard.writeText(BOT_URL).then(function () { done("Copied"); }, selectText); }
+  catch (e) { selectText(); }
+});
+</script>
+
+</body></html>
